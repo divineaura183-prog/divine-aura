@@ -1,0 +1,59 @@
+/* Divine Aura — Temple theme: maroon, saffron & gold. Loaded last; overrides the neon theme. */
+:root,:root:root{--bg:#1a0709;--tx:#fbefd9;--mu:#c9a98a;--a:#ff9933;--b:#f2c14e;--g:#f2c14e;--p:#d94f30;--gl:rgba(255,214,150,.06);--ln:rgba(242,193,78,.22);--ease:cubic-bezier(.2,.8,.2,1)}
+@media(prefers-color-scheme:light){:root,:root:root{--bg:#fff6e6;--tx:#3a1410;--mu:#8a5e45;--a:#e8741a;--b:#b8860b;--g:#a56a00;--p:#b3361c;--gl:rgba(150,70,20,.05);--ln:rgba(140,80,20,.22)}}
+html,body{background:var(--bg)!important;color:var(--tx)}
+body{font-family:'Inter',system-ui,sans-serif}
+body::before{background:radial-gradient(900px 520px at 50% -10%,rgba(255,153,51,.22),transparent 65%),radial-gradient(500px 400px at 0 100%,rgba(217,79,48,.16),transparent 65%)!important}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.07;background:repeating-radial-gradient(circle at 50% 0,var(--b) 0 1px,transparent 1px 28px)}
+.da-glow,.da-prog{display:none!important}
+h1,h2,h3,.d,.logo,.brand{font-family:'Cormorant Garamond','Cinzel',Georgia,serif!important;font-weight:700;letter-spacing:.01em}
+h1{font-size:clamp(40px,10vw,78px)!important;line-height:1}h2{font-size:clamp(28px,6vw,44px)!important}
+h1 em{background:linear-gradient(100deg,#ffb347,#f2c14e 55%,#fff0b8)!important;-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic}
+.ey,.eyebrow{font-family:'Inter'!important;color:var(--a)!important;letter-spacing:.32em;font-weight:600}
+.ey::before{content:"ॐ  ";letter-spacing:0}
+.ann{background:linear-gradient(90deg,#7a1f12,#b3361c,#7a1f12)!important;color:#ffe9b8!important;font-family:'Inter'!important;letter-spacing:.16em}
+header{background:color-mix(in srgb,var(--bg) 86%,transparent)!important;border-bottom:1px solid var(--ln)!important}
+.logo{font-size:20px!important;letter-spacing:.12em;color:var(--b)!important}
+.mk{background:radial-gradient(circle at 50% 40%,#fff0b8,#f2c14e 35%,#ff9933 70%,#b3361c)!important;box-shadow:0 0 16px rgba(255,153,51,.7)!important}
+#nav a,nav a{font-family:'Inter'}#nav a.on,#nav a:hover,nav a.on,nav a:hover{color:var(--b)!important;background:var(--gl)!important}
+#nav a.cb,nav a.cb{background:linear-gradient(135deg,#ff9933,#f2c14e)!important;color:#2a0a05!important}
+.btn,.pb{background:linear-gradient(135deg,#ff9933,#f2c14e)!important;color:#2a0a05!important;border-radius:999px!important;font-weight:700;letter-spacing:.02em;box-shadow:0 8px 26px rgba(255,153,51,.32)!important}
+.btn.s,.btn.alt{background:transparent!important;color:var(--b)!important;border:1px solid var(--b)!important;box-shadow:none!important}
+.gl,.panel{background:linear-gradient(160deg,rgba(255,214,150,.08),rgba(255,214,150,.02))!important;border:1px solid var(--ln)!important;border-radius:20px!important;backdrop-filter:blur(6px)}
+.gl::before,.gl::after,.panel::after{display:none!important}
+.card{overflow:hidden}.card:hover{transform:translateY(-5px)!important;border-color:var(--b)!important;box-shadow:0 14px 40px rgba(255,153,51,.2)!important}
+.art{background:radial-gradient(circle at 50% 40%,rgba(255,153,51,.28),rgba(122,31,18,.15) 70%)!important;border-radius:14px!important;border:1px solid var(--ln)}
+.bd,.tag{color:#2a0a05!important;background:var(--b)!important;border:0!important;font-family:'Inter'!important;font-weight:700}
+.pr{font-family:'Inter'!important;color:var(--b)}.st{color:var(--a)!important}
+.chip{border-radius:999px!important}.chip.on{background:linear-gradient(135deg,#ff9933,#f2c14e)!important;color:#2a0a05!important;border-color:transparent!important}
+input,select,textarea{border-radius:12px!important;border:1px solid var(--ln)!important;background:rgba(255,214,150,.07)!important}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--a);outline-offset:1px}
+label{font-family:'Inter'!important;color:var(--mu)}
+.tabs{background:color-mix(in srgb,var(--bg) 88%,transparent)!important;border:1px solid var(--ln)!important}
+.tabs a{font-family:'Inter'!important}.tabs a.on{color:var(--b)!important;background:linear-gradient(135deg,rgba(255,153,51,.28),rgba(242,193,78,.12))!important}
+.mg.u{background:rgba(255,153,51,.25)!important}
+.bar i{background:linear-gradient(90deg,#d94f30,#ff9933,#f2c14e)!important}
+table th{color:var(--b);font-family:'Inter'}
+footer{border-top:1px solid var(--ln);margin-top:30px}
+::selection{background:var(--a);color:#2a0a05}
+/* --- override leftover neon rules from theme-neura.css --- */
+header{background:color-mix(in srgb,var(--bg) 88%,transparent)!important;border-bottom:1px solid var(--ln)!important;box-shadow:0 6px 24px rgba(0,0,0,.18)!important;padding:10px 14px!important}
+.brand{color:var(--tx)!important}.brand *{font-family:'Cormorant Garamond',Georgia,serif}
+.brand b,.brand strong,.brand span:first-of-type{font-size:22px;letter-spacing:.08em}
+.lg{width:40px!important;height:40px!important;background:radial-gradient(circle at 50% 40%,#fff0b8,#f2c14e 38%,#ff9933 72%,#b3361c)!important;border:1px solid var(--b)!important;box-shadow:0 0 22px rgba(255,153,51,.55)!important;animation:none!important}
+.yearmark{color:var(--a)!important;border:1px solid var(--ln)!important;font-family:'Inter'!important}
+h1,h2,h3,.d{font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:700!important;letter-spacing:.01em!important;text-transform:none!important}
+.status,.metric,.result{background:var(--gl)!important;border:1px solid var(--ln)!important;border-radius:14px!important;color:var(--mu)}
+.metric::before,.metric::after{display:none!important}
+.metric b,.metric strong{color:var(--b)!important}
+.btn,.pb,.btn.s,.btn.alt{border-color:transparent}
+.btn.s,.btn.alt{border:1px solid var(--b)!important}
+.btn{font-size:13px!important;padding:11px 16px!important}
+.result:hover{border-color:var(--b)!important}
+.btn::after{display:none!important}
+.btn{border:0!important;outline:0!important}.btn.s,.btn.alt{border:1px solid var(--b)!important}
+.brand span,.brand b,.brand strong{font-size:22px!important;letter-spacing:.08em!important;white-space:nowrap}
+.brand small,.brand em{font-family:'Inter'!important;font-size:9px!important;letter-spacing:.22em!important;color:var(--mu)!important;white-space:nowrap}
+.yearmark{display:none!important}
+
+/* Om section styles are inlined in index.html */

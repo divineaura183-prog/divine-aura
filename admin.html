@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Divine Aura Admin</title>
+<style>
+:root{color-scheme:dark;--bg:#070411;--tx:#f3eeff;--mu:#a49abf;--a:#9d6bff;--b:#37e6ff;--line:#ffffff20;--panel:#ffffff08}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 90% 0,#2b1450,transparent 35%),var(--bg);color:var(--tx);font:15px/1.5 system-ui, sans-serif}main{max-width:1100px;margin:auto;padding:22px}h1,h2{font-family:Georgia,serif}h1{font-size:30px}button,.btn{border:0;border-radius:10px;padding:10px 14px;background:linear-gradient(120deg,var(--a),var(--b));color:#090413;font-weight:700;cursor:pointer}button.secondary{background:#ffffff10;color:var(--tx);border:1px solid var(--line)}input,select,textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:9px;background:#ffffff08;color:var(--tx);font:inherit}label{display:block;color:var(--mu);font-size:12px;margin:12px 0 5px}.panel{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:18px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.tabs{display:flex;gap:8px;flex-wrap:wrap}.hidden{display:none!important}.muted{color:var(--mu);font-size:13px}.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px 6px;border-bottom:1px solid var(--line);vertical-align:top}td img{width:54px;height:54px;object-fit:cover;border-radius:8px}.msg{padding:10px;border-radius:10px;background:#9d6bff22;margin:10px 0;white-space:pre-wrap}@media(max-width:600px){main{padding:14px}table{font-size:12px}}
+</style><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet"><style>/* Divine Aura — Temple theme: maroon, saffron & gold. Loaded last; overrides the neon theme. */
+:root,:root:root{--bg:#1a0709;--tx:#fbefd9;--mu:#c9a98a;--a:#ff9933;--b:#f2c14e;--g:#f2c14e;--p:#d94f30;--gl:rgba(255,214,150,.06);--ln:rgba(242,193,78,.22);--ease:cubic-bezier(.2,.8,.2,1)}
+@media(prefers-color-scheme:light){:root,:root:root{--bg:#fff6e6;--tx:#3a1410;--mu:#8a5e45;--a:#e8741a;--b:#b8860b;--g:#a56a00;--p:#b3361c;--gl:rgba(150,70,20,.05);--ln:rgba(140,80,20,.22)}}
+html,body{background:var(--bg)!important;color:var(--tx)}
+body{font-family:'Inter',system-ui,sans-serif}
+body::before{background:radial-gradient(900px 520px at 50% -10%,rgba(255,153,51,.22),transparent 65%),radial-gradient(500px 400px at 0 100%,rgba(217,79,48,.16),transparent 65%)!important}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.07;background:repeating-radial-gradient(circle at 50% 0,var(--b) 0 1px,transparent 1px 28px)}
+.da-glow,.da-prog{display:none!important}
+h1,h2,h3,.d,.logo,.brand{font-family:'Cormorant Garamond','Cinzel',Georgia,serif!important;font-weight:700;letter-spacing:.01em}
+h1{font-size:clamp(40px,10vw,78px)!important;line-height:1}h2{font-size:clamp(28px,6vw,44px)!important}
+h1 em{background:linear-gradient(100deg,#ffb347,#f2c14e 55%,#fff0b8)!important;-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic}
+.ey,.eyebrow{font-family:'Inter'!important;color:var(--a)!important;letter-spacing:.32em;font-weight:600}
+.ey::before{content:"ॐ  ";letter-spacing:0}
+.ann{background:linear-gradient(90deg,#7a1f12,#b3361c,#7a1f12)!important;color:#ffe9b8!important;font-family:'Inter'!important;letter-spacing:.16em}
+header{background:color-mix(in srgb,var(--bg) 86%,transparent)!important;border-bottom:1px solid var(--ln)!important}
+.logo{font-size:20px!important;letter-spacing:.12em;color:var(--b)!important}
+.mk{background:radial-gradient(circle at 50% 40%,#fff0b8,#f2c14e 35%,#ff9933 70%,#b3361c)!important;box-shadow:0 0 16px rgba(255,153,51,.7)!important}
+#nav a,nav a{font-family:'Inter'}#nav a.on,#nav a:hover,nav a.on,nav a:hover{color:var(--b)!important;background:var(--gl)!important}
+#nav a.cb,nav a.cb{background:linear-gradient(135deg,#ff9933,#f2c14e)!important;color:#2a0a05!important}
+.btn,.pb{background:linear-gradient(135deg,#ff9933,#f2c14e)!important;color:#2a0a05!important;border-radius:999px!important;font-weight:700;letter-spacing:.02em;box-shadow:0 8px 26px rgba(255,153,51,.32)!important}
+.btn.s,.btn.alt{background:transparent!important;color:var(--b)!important;border:1px solid var(--b)!important;box-shadow:none!important}
+.gl,.panel{background:linear-gradient(160deg,rgba(255,214,150,.08),rgba(255,214,150,.02))!important;border:1px solid var(--ln)!important;border-radius:20px!important;backdrop-filter:blur(6px)}
+.gl::before,.gl::after,.panel::after{display:none!important}
+.card{overflow:hidden}.card:hover{transform:translateY(-5px)!important;border-color:var(--b)!important;box-shadow:0 14px 40px rgba(255,153,51,.2)!important}
+.art{background:radial-gradient(circle at 50% 40%,rgba(255,153,51,.28),rgba(122,31,18,.15) 70%)!important;border-radius:14px!important;border:1px solid var(--ln)}
+.bd,.tag{color:#2a0a05!important;background:var(--b)!important;border:0!important;font-family:'Inter'!important;font-weight:700}
+.pr{font-family:'Inter'!important;color:var(--b)}.st{color:var(--a)!important}
+.chip{border-radius:999px!important}.chip.on{background:linear-gradient(135deg,#ff9933,#f2c14e)!important;color:#2a0a05!important;border-color:transparent!important}
+input,select,textarea{border-radius:12px!important;border:1px solid var(--ln)!important;background:rgba(255,214,150,.07)!important}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--a);outline-offset:1px}
+label{font-family:'Inter'!important;color:var(--mu)}
+.tabs{background:color-mix(in srgb,var(--bg) 88%,transparent)!important;border:1px solid var(--ln)!important}
+.tabs a{font-family:'Inter'!important}.tabs a.on{color:var(--b)!important;background:linear-gradient(135deg,rgba(255,153,51,.28),rgba(242,193,78,.12))!important}
+.mg.u{background:rgba(255,153,51,.25)!important}
+.bar i{background:linear-gradient(90deg,#d94f30,#ff9933,#f2c14e)!important}
+table th{color:var(--b);font-family:'Inter'}
+footer{border-top:1px solid var(--ln);margin-top:30px}
+::selection{background:var(--a);color:#2a0a05}
+/* --- override leftover neon rules from theme-neura.css --- */
+header{background:color-mix(in srgb,var(--bg) 88%,transparent)!important;border-bottom:1px solid var(--ln)!important;box-shadow:0 6px 24px rgba(0,0,0,.18)!important;padding:10px 14px!important}
+.brand{color:var(--tx)!important}.brand *{font-family:'Cormorant Garamond',Georgia,serif}
+.brand b,.brand strong,.brand span:first-of-type{font-size:22px;letter-spacing:.08em}
+.lg{width:40px!important;height:40px!important;background:radial-gradient(circle at 50% 40%,#fff0b8,#f2c14e 38%,#ff9933 72%,#b3361c)!important;border:1px solid var(--b)!important;box-shadow:0 0 22px rgba(255,153,51,.55)!important;animation:none!important}
+.yearmark{color:var(--a)!important;border:1px solid var(--ln)!important;font-family:'Inter'!important}
+h1,h2,h3,.d{font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:700!important;letter-spacing:.01em!important;text-transform:none!important}
+.status,.metric,.result{background:var(--gl)!important;border:1px solid var(--ln)!important;border-radius:14px!important;color:var(--mu)}
+.metric::before,.metric::after{display:none!important}
+.metric b,.metric strong{color:var(--b)!important}
+.btn,.pb,.btn.s,.btn.alt{border-color:transparent}
+.btn.s,.btn.alt{border:1px solid var(--b)!important}
+.btn{font-size:13px!important;padding:11px 16px!important}
+.result:hover{border-color:var(--b)!important}
+.btn::after{display:none!important}
+.btn{border:0!important;outline:0!important}.btn.s,.btn.alt{border:1px solid var(--b)!important}
+.brand span,.brand b,.brand strong{font-size:22px!important;letter-spacing:.08em!important;white-space:nowrap}
+.brand small,.brand em{font-family:'Inter'!important;font-size:9px!important;letter-spacing:.22em!important;color:var(--mu)!important;white-space:nowrap}
+.yearmark{display:none!important}
+</style><style>
+.tabs button{opacity:.75}.tabs button.on{opacity:1;outline:2px solid var(--b)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.stat{border:1px solid var(--line);border-radius:14px;padding:14px;background:#ffffff08}.stat b{display:block;font-size:24px;margin-top:4px}
+.bars{display:flex;align-items:flex-end;gap:8px;height:120px;margin-top:10px}.bars div{flex:1;text-align:center;font-size:10px;color:var(--mu);display:flex;flex-direction:column;justify-content:flex-end;height:100%}.bars i{display:block;background:linear-gradient(var(--b),var(--a));border-radius:6px 6px 0 0;min-height:2px}
+.scroll{overflow-x:auto}.scroll table{min-width:640px}.tool{display:flex;gap:8px;flex-wrap:wrap;align-items:end;margin:10px 0}.tool>*{flex:1 1 140px;min-width:120px}.tool button{flex:0 0 auto}
+td input[type=number]{width:96px;padding:7px}.chk{width:auto!important}.pill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;background:#ffffff14}.pill.bad{background:#ff5d7a33}.pill.ok{background:#37e6a033}
+.cat{display:flex;gap:8px;align-items:center;margin:8px 0}.cat input{flex:1}.cat span{min-width:70px;font-size:12px;color:var(--mu)}
+label.inl{display:flex;gap:10px;align-items:center;color:var(--tx);font-size:14px;margin:8px 0}label.inl input{width:auto}
+input[type=color]{height:44px;padding:3px}.msg.err{background:#ff5d7a33}
+</style></head><body><main>
+<div class="row"><div><div class="muted">DIVINE AURA · CONTROL CENTRE</div><h1>Admin dashboard</h1></div><a class="btn" href="/">Open storefront ↗</a></div>
+<div id="message" class="msg hidden"></div>
+<section id="login" class="panel" style="max-width:480px;margin:40px auto"><h2>Secure admin login</h2><label>Email</label><input id="email" type="email" autocomplete="username"><label>Password</label><input id="password" type="password" autocomplete="current-password"><br><br><button onclick="login()">Sign in</button><p class="muted">Use the administrator credentials configured in your .env file.</p></section>
+<section id="dashboard" class="hidden">
+<div class="tabs" id="tabbar"><button data-t="stats">Dashboard</button><button data-t="products">Products</button><button data-t="orders">Orders</button><button data-t="cats">Categories</button><button data-t="settings">Store settings</button><button data-t="account">Account</button><button class="secondary" onclick="logout()">Log out</button></div>
+
+<div id="stats" class="panel tab"><h2>Overview</h2><div id="statBox" class="muted">Loading…</div></div>
+
+<div id="products" class="panel tab hidden">
+ <div class="row"><h2>Products</h2><button onclick="newProduct()">+ Add product</button></div>
+ <div class="tool"><div><label>Search</label><input id="fq" placeholder="Name…" oninput="renderProducts()"></div><div><label>Category</label><select id="fcat" onchange="renderProducts()"></select></div><div><label>Show</label><select id="fact" onchange="renderProducts()"><option value="1">Active</option><option value="0">Archived</option><option value="">All</option></select></div></div>
+ <details class="panel" style="margin:8px 0"><summary><b>Bulk edit</b> — change many prices or stock at once</summary>
+  <div class="tool"><div><label>Apply to</label><select id="bscope"><option value="sel">Ticked products</option><option value="view">Everything in the current filter</option></select></div>
+  <div><label>Change</label><select id="bfield"><option value="price">Selling price</option><option value="mrp">MRP</option><option value="both">Price and MRP</option></select></div>
+  <div><label>How</label><select id="bmode"><option value="percent">By % (e.g. 10 or -10)</option><option value="amount">By ₹ (e.g. 50 or -50)</option><option value="set">Set exact ₹</option></select></div>
+  <div><label>Value</label><input id="bval" type="number" step="any"></div><button onclick="bulkPrice()">Apply price</button></div>
+  <div class="tool"><div><label>Set stock to</label><input id="bstock" type="number" min="0" step="1"></div><button onclick="bulkStock()">Apply stock</button><button class="secondary" onclick="bulkState('archive')">Archive</button><button class="secondary" onclick="bulkState('restore')">Restore</button></div>
+ </details>
+ <div id="productList" class="scroll"></div>
+ <div id="editor" class="hidden"><h2 id="editorTitle">Edit product</h2><input id="pid" type="hidden"><div class="grid">
+ <div><label>Product name</label><input id="pname"></div><div><label>Category</label><select id="pcat"></select></div>
+ <div><label>Price (₹)</label><input id="price" type="number" min="0" step="1"></div><div><label>MRP (₹)</label><input id="mrp" type="number" min="0" step="1"></div>
+ <div><label>Stock</label><input id="stock" type="number" min="0" step="1"></div><div><label>Badge (optional label)</label><input id="badge" placeholder="NEW"></div>
+ </div><label class="inl"><input id="pactive" type="checkbox" checked> Visible in the store</label>
+ <label>Short description</label><textarea id="desc" rows="2"></textarea><label>Details</label><textarea id="details" rows="3"></textarea><label>Product image upload (JPG, PNG, WEBP, GIF; max 5 MB)</label><input id="image" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><label>Or image URL</label><input id="imageUrl" placeholder="/uploads/filename.jpg or https://…"><br><br><button onclick="saveProduct()">Save product</button> <button class="secondary" onclick="cancelEdit()">Cancel</button></div>
+</div>
+
+<div id="orders" class="panel tab hidden"><div class="row"><h2>Orders</h2><div><select id="ofil" onchange="renderOrders()" style="width:auto"><option value="">All statuses</option><option>Placed</option><option>Packed</option><option>Shipped</option><option>Delivered</option><option>Cancelled</option></select> <button class="secondary" onclick="exportOrders()">Export CSV</button></div></div><div id="orderList" class="scroll"></div></div>
+
+<div id="cats" class="panel tab hidden"><h2>Categories</h2><p class="muted">Rename, reorder, add or remove store categories. Renaming moves all its products automatically. A category can only be removed when it has no products.</p><div id="catList"></div><button class="secondary" onclick="addCat()">+ Add category</button> <button onclick="saveCats()">Save categories</button></div>
+
+<div id="settings" class="panel tab hidden"><h2>Store settings</h2>
+ <h3>Storefront text</h3><div class="grid"><div><label>Store name (browser tab)</label><input id="s_storeName"></div><div><label>Hero line 1</label><input id="s_h1"></div><div><label>Hero line 2 (highlight)</label><input id="s_h2"></div></div>
+ <label>Hero description</label><textarea id="s_sub" rows="3"></textarea><label>Announcement bar</label><input id="s_ann">
+ <h3>Shipping</h3><div class="grid"><div><label>Shipping fee (₹)</label><input id="s_fee" type="number" min="0" step="1"></div><div><label>Free shipping from order value (₹)</label><input id="s_free" type="number" min="0" step="1"></div></div>
+ <h3>Payment methods</h3><label class="inl"><input type="checkbox" id="p_upi"> UPI</label><label class="inl"><input type="checkbox" id="p_card"> Debit / credit card</label><label class="inl"><input type="checkbox" id="p_netbanking"> Netbanking</label><label class="inl"><input type="checkbox" id="p_cod"> Cash on delivery</label>
+ <h3>Theme colours</h3><div class="grid"><div><label>Accent colour 1</label><input id="s_accentA" type="color" value="#9d6bff"></div><div><label>Accent colour 2</label><input id="s_accentB" type="color" value="#37e6ff"></div></div>
+ <label class="inl"><input type="checkbox" id="s_defcolors"> Use the default theme colours</label>
+ <h3>Languages</h3><div id="langBox"></div><label>Default language for new visitors</label><select id="s_defaultLang"></select>
+ <div class="tool"><button class="secondary" onclick="translateAll()">Pre-translate all products &amp; texts now</button><span class="muted" id="tstat" style="flex:2 1 220px">Needs ANTHROPIC_API_KEY. Otherwise visitors’ pages are translated on demand and cached.</span></div>
+ <h3>Contact &amp; availability</h3><div class="grid"><div><label>WhatsApp number (digits with country code, e.g. 919876543210)</label><input id="s_whatsapp" inputmode="numeric"></div></div>
+ <label class="inl"><input type="checkbox" id="s_maintenance"> Pause new orders (shows a banner on the store)</label><label>Banner message</label><input id="s_maintenanceMsg">
+ <br><button onclick="saveSettings()">Save settings</button></div>
+
+<div id="account" class="panel tab hidden"><h2>Change admin password</h2><div style="max-width:420px"><label>Current password</label><input id="pw0" type="password" autocomplete="current-password"><label>New password (10+ characters)</label><input id="pw1" type="password" autocomplete="new-password"><br><br><button onclick="changePw()">Update password</button></div></div>
+</section></main>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const inr=n=>'₹'+Number(n).toLocaleString('en-IN');
+let PRODUCTS=[],ORDERS=[],CATS=[],SET=null,LANGNAMES={};
+function message(s,bad){const m=$('message');m.textContent=s;m.classList.remove('hidden');m.classList.toggle('err',!!bad);clearTimeout(message.t);message.t=setTimeout(()=>m.classList.add('hidden'),6000);scrollTo({top:0,behavior:'smooth'})}
+async function api(url,opts={}){const r=await fetch(url,{...opts,headers:{...(opts.body instanceof FormData?{}:{'Content-Type':'application/json'}),...(opts.headers||{})}});const d=await r.json().catch(()=>({}));if(!r.ok)throw Error(d.error||'Request failed');return d}
+const J=(m,b)=>({method:m,body:JSON.stringify(b)});
+async function start(){$('login').classList.add('hidden');$('dashboard').classList.remove('hidden');await loadCats();showTab('stats')}
+async function boot(){try{await api('/api/auth/me');await start()}catch{}}
+async function login(){try{await api('/api/auth/login',J('POST',{email:$('email').value,password:$('password').value}));message('Signed in successfully.');await start()}catch(e){message(e.message,1)}}
+async function logout(){await api('/api/auth/logout',{method:'POST'});location.reload()}
+$('tabbar').addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(b)showTab(b.dataset.t)});
+function showTab(t){document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==t));document.querySelectorAll('#tabbar [data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+ ({stats:loadStats,products:loadProducts,orders:loadOrders,cats:renderCats,settings:loadSettings,account:()=>{}})[t]()}
+/* ---- dashboard ---- */
+async function loadStats(){try{const d=await api('/api/admin/stats'),max=Math.max(1,...d.last7.map(x=>x.amount));
+ $('statBox').innerHTML=`<div class="stats"><div class="stat">Revenue (paid / COD)<b>${inr(d.revenue)}</b></div><div class="stat">Total orders<b>${d.orders}</b></div><div class="stat">Open orders<b>${d.open}</b></div><div class="stat">Awaiting payment<b>${d.awaitingPayment}</b></div><div class="stat">Live products<b>${d.products}</b></div><div class="stat">Archived<b>${d.archived}</b></div></div>
+ <h3>Last 7 days</h3><div class="bars">${d.last7.map(x=>`<div><i style="height:${Math.round(x.amount/max*100)}%"></i>${x.day.slice(5)}<br>${x.amount?inr(x.amount):'—'}</div>`).join('')}</div>
+ <div class="grid" style="margin-top:16px"><div><h3>Low stock (5 or fewer)</h3>${d.lowStock.length?d.lowStock.map(p=>`<div>${esc(p.name)} — <span class="pill ${p.stock?'':'bad'}">${p.stock} left</span></div>`).join(''):'<p class="muted">All stocked.</p>'}</div><div><h3>Top sellers</h3>${d.topProducts.length?d.topProducts.map(p=>`<div>${esc(p.name)} — ${p.qty} sold</div>`).join(''):'<p class="muted">No sales yet.</p>'}</div></div>`}catch(e){message(e.message,1)}}
+/* ---- categories ---- */
+async function loadCats(){const d=await api('/api/admin/categories');CATS=d.categories.map(c=>({...c,from:c.name}));fillCatSelects()}
+function fillCatSelects(){const names=CATS.map(c=>c.name);$('pcat').innerHTML=names.map(c=>`<option>${esc(c)}</option>`).join('');const cur=$('fcat').value;$('fcat').innerHTML='<option value="">All categories</option>'+names.map(c=>`<option ${c===cur?'selected':''}>${esc(c)}</option>`).join('')}
+function renderCats(){$('catList').innerHTML=CATS.map((c,i)=>`<div class="cat"><input data-i="${i}" value="${esc(c.name)}"><span>${c.from?c.count+' items':'new'}</span><button class="secondary" data-up="${i}">↑</button><button class="secondary" data-del="${i}">✕</button></div>`).join('')}
+$('catList').addEventListener('input',e=>{if(e.target.dataset.i!=null)CATS[e.target.dataset.i].name=e.target.value});
+$('catList').addEventListener('click',e=>{const u=e.target.dataset.up,d=e.target.dataset.del;if(u!=null&&u>0){[CATS[u-1],CATS[u]]=[CATS[u],CATS[u-1]];renderCats()}if(d!=null){CATS.splice(d,1);renderCats()}});
+function addCat(){CATS.push({name:'',from:null,count:0});renderCats();const i=document.querySelectorAll('#catList input');i[i.length-1].focus()}
+async function saveCats(){try{await api('/api/admin/categories',J('PUT',{categories:CATS.map(c=>({name:c.name,from:c.from}))}));await loadCats();renderCats();message('Categories saved. The store updates immediately.')}catch(e){message(e.message,1)}}
+/* ---- products ---- */
+async function loadProducts(){try{PRODUCTS=(await api('/api/admin/products')).products;renderProducts()}catch(e){message(e.message,1)}}
+function filtered(){const q=$('fq').value.trim().toLowerCase(),c=$('fcat').value,a=$('fact').value;return PRODUCTS.filter(p=>(!q||p.name.toLowerCase().includes(q))&&(!c||p.cat===c)&&(a===''||String(+p.active)===a))}
+function renderProducts(){const L=filtered();$('productList').innerHTML=L.length?`<table><thead><tr><th><input type="checkbox" class="chk" id="selAll"></th><th>Image</th><th>Product</th><th>Price ₹</th><th>MRP ₹</th><th>Stock</th><th>Actions</th></tr></thead><tbody>`+L.map(p=>`<tr data-id="${esc(p.id)}"><td><input type="checkbox" class="chk sel" value="${esc(p.id)}"></td><td>${p.imageUrl?`<img src="${esc(p.imageUrl)}">`:'—'}</td><td>${esc(p.name)}<div class="muted">${esc(p.cat)} ${p.active?'':'<span class="pill bad">archived</span>'}</div></td><td><input type="number" min="0" data-f="price" value="${p.price}"></td><td><input type="number" min="0" data-f="mrp" value="${p.mrp}"></td><td><input type="number" min="0" data-f="stock" value="${p.stock}"></td><td><button class="secondary" data-a="edit">Edit</button> <button class="secondary" data-a="${p.active?'archive':'restore'}">${p.active?'Archive':'Restore'}</button> <button class="secondary" data-a="delete">Delete</button></td></tr>`).join('')+'</tbody></table>':'<p class="muted">No products match.</p>'}
+$('productList').addEventListener('change',async e=>{
+ if(e.target.id==='selAll'){document.querySelectorAll('.sel').forEach(c=>c.checked=e.target.checked);return}
+ const f=e.target.dataset.f;if(!f)return;const id=e.target.closest('tr').dataset.id,p=PRODUCTS.find(x=>x.id===id);const old=p[f];p[f]=Number(e.target.value);
+ try{await api('/api/admin/products/'+encodeURIComponent(id),J('PUT',p));message(`${p.name}: ${f} saved.`)}catch(err){p[f]=old;e.target.value=old;message(err.message,1)}});
+$('productList').addEventListener('click',async e=>{const a=e.target.dataset.a;if(!a)return;const id=e.target.closest('tr').dataset.id,p=PRODUCTS.find(x=>x.id===id);
+ try{if(a==='edit'){fill(p);$('editor').classList.remove('hidden');$('editor').scrollIntoView({behavior:'smooth'})}
+ else if(a==='archive'||a==='restore'){await api('/api/admin/products-bulk',J('POST',{action:a,ids:[id]}));await loadProducts();message(a==='archive'?'Product archived.':'Product restored.')}
+ else if(a==='delete'){if(!confirm('Permanently delete "'+p.name+'"? Past orders keep their own copy. This cannot be undone.'))return;await api('/api/admin/products/'+encodeURIComponent(id)+'/permanent',{method:'DELETE'});await loadProducts();message('Product deleted.')}}catch(err){message(err.message,1)}});
+const selected=()=>[...document.querySelectorAll('.sel:checked')].map(c=>c.value);
+function scopeBody(){if($('bscope').value==='sel'){const ids=selected();if(!ids.length)throw Error('Tick at least one product first (or choose “Everything in the current filter”).');return{ids}}const ids=filtered().map(p=>p.id);if(!ids.length)throw Error('No products in the current filter.');return{ids}}
+async function bulk(body,ok){try{const sc=scopeBody();if(!confirm(`Apply to ${sc.ids.length} product(s)?`))return;const r=await api('/api/admin/products-bulk',J('POST',{...body,...sc}));await loadProducts();message(`${ok}: ${r.changed} product(s) updated.`)}catch(e){message(e.message,1)}}
+const bulkPrice=()=>{if($('bval').value==='')return message('Enter a value.',1);bulk({action:'price',mode:$('bmode').value,field:$('bfield').value,value:Number($('bval').value)},'Prices changed')};
+const bulkStock=()=>{if($('bstock').value==='')return message('Enter a stock number.',1);bulk({action:'stock',value:Number($('bstock').value)},'Stock set')};
+const bulkState=a=>bulk({action:a},a==='archive'?'Archived':'Restored');
+function newProduct(){fill({id:'',name:'',cat:CATS[0]?CATS[0].name:'',price:499,mrp:599,stock:10,badge:'',desc:'',details:'',imageUrl:'',active:true});$('editor').classList.remove('hidden');$('editor').scrollIntoView({behavior:'smooth'})}
+function fill(p){for(const [k,id] of Object.entries({id:'pid',name:'pname',cat:'pcat',price:'price',mrp:'mrp',stock:'stock',badge:'badge',desc:'desc',details:'details',imageUrl:'imageUrl'}))$(id).value=p[k]??'';$('pactive').checked=p.active!==false;$('image').value='';$('editorTitle').textContent=p.id?'Edit product':'Add product'}
+function cancelEdit(){$('editor').classList.add('hidden')}
+async function saveProduct(){try{let imageUrl=$('imageUrl').value.trim();const f=$('image').files[0];if(f){const fd=new FormData();fd.append('image',f);imageUrl=(await api('/api/admin/upload',{method:'POST',body:fd})).imageUrl}
+ const p={name:$('pname').value,cat:$('pcat').value,price:Number($('price').value),mrp:Number($('mrp').value),stock:Number($('stock').value),badge:$('badge').value,desc:$('desc').value,details:$('details').value,imageUrl,active:$('pactive').checked};
+ const id=$('pid').value;await api(id?'/api/admin/products/'+encodeURIComponent(id):'/api/admin/products',J(id?'PUT':'POST',p));message('Product saved.');cancelEdit();await loadProducts()}catch(e){message(e.message,1)}}
+/* ---- orders ---- */
+async function loadOrders(){try{ORDERS=(await api('/api/admin/orders')).orders;renderOrders()}catch(e){message(e.message,1)}}
+const ST=['Placed','Packed','Shipped','Delivered','Cancelled'],PS=['Pending','Paid','COD','Refunded'];
+function renderOrders(){const f=$('ofil').value,L=ORDERS.filter(o=>!f||o.status===f);$('orderList').innerHTML=L.length?'<table><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th></tr></thead><tbody>'+L.map(o=>`<tr data-ref="${esc(o.ref)}"><td>${esc(o.ref)}<div class="muted">${new Date(o.created_at).toLocaleString()}</div></td><td>${esc(o.customer_name)}<br><a href="tel:${esc(o.phone)}" style="color:var(--b)">${esc(o.phone)}</a><div class="muted">${esc(o.address)}</div></td><td>${o.items.map(i=>esc(i.name)+' × '+i.quantity).join('<br>')}</td><td>${inr(o.amount)}</td><td><select data-k="paymentStatus">${PS.map(s=>`<option ${s===o.payment_status?'selected':''}>${s}</option>`).join('')}</select><div class="muted">${esc(o.payment_method)}</div></td><td><select data-k="status" ${o.status==='Cancelled'?'disabled':''}>${ST.map(s=>`<option ${s===o.status?'selected':''}>${s}</option>`).join('')}</select></td></tr>`).join('')+'</tbody></table>':'<p class="muted">No orders.</p>'}
+$('orderList').addEventListener('change',async e=>{const k=e.target.dataset.k;if(!k)return;const ref=e.target.closest('tr').dataset.ref;if(k==='status'&&e.target.value==='Cancelled'&&!confirm('Cancel this order? Stock is returned and it cannot be reopened.')){return renderOrders()}
+ try{await api('/api/admin/orders/'+encodeURIComponent(ref),J('PATCH',{[k]:e.target.value}));message('Order updated.');await loadOrders()}catch(err){message(err.message,1);loadOrders()}});
+function exportOrders(){const rows=[['Order','Date','Customer','Phone','Address','Items','Total','Payment','Payment status','Status'],...ORDERS.map(o=>[o.ref,o.created_at,o.customer_name,o.phone,o.address,o.items.map(i=>i.name+' x'+i.quantity).join('; '),o.amount,o.payment_method,o.payment_status,o.status])];
+ const csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='orders.csv';a.click()}
+/* ---- settings ---- */
+async function loadSettings(){try{const d=await api('/api/admin/settings');SET=d.settings;LANGNAMES=d.languages;
+ for(const k of['storeName','h1','h2','sub','ann','fee','free','whatsapp','maintenanceMsg'])$('s_'+k).value=SET[k]??'';
+ for(const k of['upi','card','netbanking','cod'])$('p_'+k).checked=!!SET.pay[k];
+ $('s_maintenance').checked=!!SET.maintenance;const dc=!SET.accentA&&!SET.accentB;$('s_defcolors').checked=dc;if(SET.accentA)$('s_accentA').value=SET.accentA;if(SET.accentB)$('s_accentB').value=SET.accentB;
+ $('langBox').innerHTML=Object.entries(LANGNAMES).map(([c,n])=>`<label class="inl"><input type="checkbox" class="lg" value="${c}" ${SET.languages.includes(c)?'checked':''} ${c==='en'?'disabled checked':''}> ${esc(n)}</label>`).join('');
+ $('s_defaultLang').innerHTML=Object.entries(LANGNAMES).map(([c,n])=>`<option value="${c}" ${c===SET.defaultLang?'selected':''}>${esc(n)}</option>`).join('')}catch(e){message(e.message,1)}}
+async function saveSettings(){try{const b={};for(const k of['storeName','h1','h2','sub','ann','whatsapp','maintenanceMsg'])b[k]=$('s_'+k).value;
+ b.fee=Number($('s_fee').value);b.free=Number($('s_free').value);b.pay={};for(const k of['upi','card','netbanking','cod'])b.pay[k]=$('p_'+k).checked;
+ b.maintenance=$('s_maintenance').checked;b.accentA=$('s_defcolors').checked?'':$('s_accentA').value;b.accentB=$('s_defcolors').checked?'':$('s_accentB').value;
+ b.languages=['en',...[...document.querySelectorAll('.lg:checked')].map(c=>c.value)];b.defaultLang=$('s_defaultLang').value;
+ if(!b.languages.includes(b.defaultLang)){b.defaultLang='en'}
+ await api('/api/admin/settings',J('PUT',b));await loadSettings();message('Settings saved. The storefront picks them up on the next page load.')}catch(e){message(e.message,1)}}
+async function translateAll(){try{await api('/api/admin/translate-all',{method:'POST'});$('tstat').textContent='Translating…';const t=setInterval(async()=>{const j=(await api('/api/admin/translate-all')).job;$('tstat').textContent=j.running?`Translating… ${j.done}/${j.total}`:(j.error?'Stopped: '+j.error:'Done — all products and texts are translated.');if(!j.running)clearInterval(t)},2000)}catch(e){message(e.message,1)}}
+async function changePw(){try{await api('/api/admin/password',J('POST',{current:$('pw0').value,next:$('pw1').value}));$('pw0').value=$('pw1').value='';message('Password updated.')}catch(e){message(e.message,1)}}
+boot();
+</script></body></html>
